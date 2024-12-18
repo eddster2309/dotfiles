@@ -1,0 +1,12 @@
+alias ssh-hosts="grep -v -e 'zz_' -v -e '\*.' ~/.ssh/config | grep -P '^Host ([^*]+)$' | sed 's/Host //' | fzf"
+alias jump="ssh \$(ssh-hosts)"
+
+# Unix Helpers #
+alias cc="clear"
+alias la="ls -a"
+alias lla="ls -la"
+alias lh="ls -lah"
+alias lz="ls -lz"
+alias journal="sudo journalctl -xe"
+alias systemctl="sudo systemctl"
+alias yum="sudo yum"
