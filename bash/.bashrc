@@ -8,7 +8,7 @@ fi
 # User specific environment
 if ! [[ "$PATH" =~ "$HOME/.local/.bin:$HOME/bin:" ]]
 then
-  PATH="$HOME/.local/.bin:$HOME/bin:"
+  PATH="$HOME/.local/.bin:$HOME/bin:$PATH:"
 fi
 export PATH
 
@@ -26,11 +26,8 @@ fi
 
 unset rc
 
-[ -f /usr/share/fzf/shell/key-bindings.bash ] && source /usr/share/fzf/shell/key-bindings.bash
+eval "$(fzf --bash)"
 
 mkdir -p ~/.sandbox
-
-source ~/.dotfiles/bash_alias
-source ~/.dotfiles/bash_functions
 
 PROMPT_COMMAND=set_prompt
