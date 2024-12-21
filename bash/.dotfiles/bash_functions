@@ -1,5 +1,5 @@
 function parse_git_branch() {
-  echo "($(git rev-parse --abbrev-ref HEAD))"
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
 set_prompt(){
