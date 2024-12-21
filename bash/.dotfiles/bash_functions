@@ -12,5 +12,11 @@ set_prompt(){
   PSCYAN='\[\e[36m\]'
   PSWHITE='\[\e[37m\]'
   PSRESET='\[\e[0m\]'
-  export PS1="$PSBLUE$(parse_git_branch)$PSRESET$PSYELLOW[\u@\h \w]\n$ $PSRESET"
+  # If user is root, then use red color
+  if [[ $EUID == 0 ]]; then
+    PSUSER="$PSRED\u$PSRESET"
+  else
+    PSUSER="$PSYELLOW\u$PSRESET"
+  fi
+  export PS1="$PSBLUE$(parse_git_branch)$PSRESET$PSYELLOW[$PSRESET$PSUSER$PSYELLOW@\h \w]\n$ $PSRESET"
 }
